@@ -1,0 +1,12 @@
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 1em;
+}
+
+li {
+    list-style: none;
+    color: var(--text-color);
+}

@@ -4,8 +4,7 @@
 /* Components */
 @import url(components/Buttons.css);
 @import url(components/Form.css);
-@import url(components/Header.css);
-@import url(components/NavBar.css);
+@import url(components/List.css);
 
 /* Utilities */
 @import url(utilities/Variables.css);

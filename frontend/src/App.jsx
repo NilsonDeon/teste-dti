@@ -1,15 +1,11 @@
-import Header from "./components/Header"
 import InputForm from "./components/InputForm";
-import Response from "./components/Response";
+import PetShopList from "./components/PetShopList";
 
 function App() {
   return (
     <>
-      <Header />
-      <div id="wrapper">
-        <InputForm />
-        <Response />
-      </div>
+      <InputForm />
+      <PetShopList />
     </>
   );
 }
