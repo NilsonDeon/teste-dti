@@ -1,0 +1,10 @@
+.disabledClick{
+    pointer-events: none;
+    color: gray;
+    cursor: default;
+}
+
+.selected {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}

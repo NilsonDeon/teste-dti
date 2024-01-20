@@ -1,0 +1,11 @@
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    gap: 1em;
+    padding: 5em;
+}
