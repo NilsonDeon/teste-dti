@@ -8,7 +8,6 @@ var InputForm = () => {
 
   useEffect(() => {
     // Realizar ação quando `data` for atualizado
-    console.log(data.name);
   }, [data]); // O array de dependências garante que o efeito é chamado apenas quando `data` muda
 
   const handleSubmit = async (e) => {

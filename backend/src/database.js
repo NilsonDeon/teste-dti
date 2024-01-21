@@ -11,24 +11,24 @@ if (process.env.NODE_ENV !== "test") {
       throw err;
     } else {
       console.log(connectionMessage);
-      db.run(
-        `CREATE TABLE IF NOT EXISTS petshops (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        distance REAL,
-        smallWeek REAL,
-        largeWeek REAL,
-        smallWeekend REAL,
-        largeWeekend REAL
-      )`,
-        (err) => {
-          if (err) {
-            console.error("Erro ao criar a tabela:", err.message);
-          } else {
-            console.log("Tabela criada com sucesso.");
-          }
+      db.run(`
+        CREATE TABLE IF NOT EXISTS petshops (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT UNIQUE,
+          distance REAL,
+          smallWeek REAL,
+          largeWeek REAL,
+          smallWeekend REAL,
+          largeWeekend REAL
+        )
+      `, (err) => {
+        if (err) {
+          console.error("Erro ao criar a tabela:", err.message);
+        } else {
+          populatePetShops();
+          console.log("Tabela criada com sucesso.");
         }
-      );
+      });
     }
   });
 } else {
@@ -62,50 +62,63 @@ const petShops = {
   },
 };
 
-// Populando banco de dados com os petshops já informados
 function populatePetShops() {
-  // Itera sobre as chaves do objeto petShops
-  Object.keys(petShops).forEach((key) => {
-    const petShop = petShops[key];
-
-    // Insere os dados na tabela 'petshops'
-    db.run(
-      `INSERT INTO petshops (name, distance, smallWeek, largeWeek, smallWeekend, largeWeekend)
-            VALUES (?, ?, ?, ?, ?, ?)`,
-      [
-        petShop.name,
-        petShop.distance,
-        petShop.prices.week.small,
-        petShop.prices.week.large,
-        petShop.prices.weekend.small,
-        petShop.prices.weekend.large,
-      ],
-      (err) => {
-        if (err) {
-          console.error("Erro ao inserir dados:", err.message);
-        } else {
-          console.log(`Dados inseridos para ${petShop.name}`);
-        }
+  Object.values(petShops).forEach((petShop) => {
+    db.run(`
+      INSERT OR IGNORE INTO petshops (name, distance, smallWeek, largeWeek, smallWeekend, largeWeekend)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      petShop.name,
+      petShop.distance,
+      petShop.prices.week.small,
+      petShop.prices.week.large,
+      petShop.prices.weekend.small,
+      petShop.prices.weekend.large,
+    ], (err) => {
+      if (err) {
+        console.error("Erro ao inserir dados:", err.message);
+      } else {
+        console.log(`Dados inseridos para ${petShop.name}`);
       }
-    );
+    });
   });
 }
 
-// get all petshops from database and return as an JSON
 function getPetShopsFromDB() {
   return new Promise((resolve, reject) => {
     db.all(`SELECT * FROM petshops`, [], (err, rows) => {
       if (err) {
         reject(err);
       }
-    
       resolve(rows);
     });
-
   });
 }
 
+function closeDB() {
+  db.close();
+}
 
+function insertPetShop(petShop) {
+  return new Promise((resolve, reject) => {
+    db.run(`
+      INSERT OR IGNORE INTO petshops (name, distance, smallWeek, largeWeek, smallWeekend, largeWeekend)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      petShop.name,
+      petShop.distance,
+      petShop.smallWeek,
+      petShop.largeWeek,
+      petShop.smallWeekend,
+      petShop.largeWeekend,
+    ], (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(`Dados inseridos para ${petShop.name}`);
+      }
+    });
+  });
+}
 
-
-module.exports = { populatePetShops, getPetShopsFromDB };
+module.exports = { getPetShopsFromDB, insertPetShop, closeDB };

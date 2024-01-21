@@ -10,3 +10,9 @@ li {
     list-style: none;
     color: var(--text-color);
 }
+
+#header-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

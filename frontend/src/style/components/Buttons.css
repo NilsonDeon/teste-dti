@@ -27,3 +27,9 @@ button:hover {
 .negative-button:hover {
     background-color: #e83a3a;
 }
+
+#round-button {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
