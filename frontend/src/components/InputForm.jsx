@@ -86,12 +86,12 @@ function InputForm() {
       <div id="wrapper">
         <form onSubmit={handleSubmit} className="form">
           <label htmlFor="data">Data</label>
-          <input
-            name="data"
-            type="date"
-            placeholder="Insira a data"
-            onChange={(e) => setDate(e.target.value)}
-          />
+            <input
+              name="data"
+              type="date"
+              placeholder="Insira a data"
+              onChange={(e) => setDate(e.target.value)}
+            />
           <span className="spanErrorDate"></span>
           <label htmlFor="small">Cães Pequenos</label>
           <input

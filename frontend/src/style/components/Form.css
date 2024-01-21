@@ -29,10 +29,6 @@
     margin-bottom: 1em;
 }
 
-.form > label {
-    width: 50%;
-}
-
 #form-buttons {
     margin-top: 1em;
     display: flex;

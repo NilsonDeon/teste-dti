@@ -13,7 +13,7 @@
 
 # O que falta fazer layout
 - [x] título 
-- [ ] deixar bonito
+- [x] deixar bonito
 
 # O que talvez fazer
 - [ ] excluir

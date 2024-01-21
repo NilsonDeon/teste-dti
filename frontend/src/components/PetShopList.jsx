@@ -81,8 +81,7 @@ function PetShopList() {
       <div id="header-list">
         <h2>Lista de PetShops</h2>
         <button
-          className="highlighted-button"
-          id="round-button"
+          className="highlighted-button round-button"
           onClick={openModal}
         >
           +
@@ -121,41 +120,48 @@ function PetShopList() {
       onRequestClose={closeModal}
       contentLabel="Modal"
       overlayClassName="modal-overlay"
+      className={"modal-content"}
     >
 
-      <div>
-        <h2>Inserir Pet Shop</h2>
-        <button onClick={closeModal}>X</button>
-      </div>
+
+        <h3> Inserir Pet Shop</h3>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Nome</label>
         <input type="text" name="name" onChange={(e) => setName(e.target.value)}
+          placeholder="Insira o Nome do Pet Shop"
             required />
         <label htmlFor="distance">Distância</label>
         <input type="number" name="distance" onChange={(e) => setDistance(e.target.value)}
-            required />
-        <div>
-          <h3>Preço - Dia Útil</h3>
+          placeholder="Insira a Distância ao Pet Shop" step={0.01}  required />
+        <div className="week">
+          <h4>Preço - Dia Útil</h4>
           <label htmlFor="smallWeek">Cão Pequeno</label>
           <input type="number" name="smallWeek" onChange={(e) => setSmallWeek(e.target.value)}
+          placeholder="Insira o Preço de Banho em Cão Pequeno no Dia Útil"
             required/>
           <label htmlFor="largeWeek">Cão Grande</label>
           <input type="number" name="largeWeek" onChange={(e) => setLargeWeek(e.target.value)}
+          placeholder="Insira o Preço de Banho em Cão Grande no Dia Útil"
             required />
         </div>
-        <div>
-          <h3>Preço - Final de Semana</h3>
+        <div className="weekend">
+          <h4>Preço - Final de Semana</h4>
           <label htmlFor="smallWeekend">Cão Pequeno</label>
           <input type="number" name="smallWeekend" onChange={(e) => setSmallWeekend(e.target.value)}
+          placeholder="Insira o Preço de Banho em Cão Pequeno no Final de Semana"
             required />
           <label htmlFor="largeWeekend">Cão Grande</label>
           <input type="number" name="largeWeekend" onChange={(e) => setLargeWeekend(e.target.value)}
+          placeholder="Insira o Preço de Banho em Cão Grande no Final de Semana"
             required />
         </div>
         
-
-        <button type="submit">Add PetShop</button>
+        <div className="modal-button">
+          <button type="submit" className="highlighted-button">Adicionar</button>
+          <button onClick={closeModal} className="negative-button">Cancelar</button>
+        </div>
+        
       </form>
       
     </Modal>
