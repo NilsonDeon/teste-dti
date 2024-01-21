@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 15em;
+    height: 20em;
     width: 25em;
     align-items: center;
+    padding: 3em 0;
 }
 
 .form > input {
@@ -21,12 +22,11 @@
     outline: none;
 }
 
-.form > input:valid {
-    border-bottom: 4px solid var(--accent-color);
-}
 
-.form > input:invalid {
-    border-bottom: 4px solid #c02626;
+.form > span {
+    color: #c02626;
+    font-size: small;
+    margin-bottom: 1em;
 }
 
 .form > label {
@@ -44,6 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 0 5em;
 }
 
 #response {
@@ -51,4 +52,8 @@
     border-radius: 15px;
     color: var(--text-color);
     padding: 3em;
+}
+
+#title {
+    text-align: center;
 }
