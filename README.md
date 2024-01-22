@@ -25,9 +25,9 @@ Este é um sistema para calcular o melhor pet shop seguindo a ideia apresentada 
 2. Uso do SQLite3: devido a sua facilidade de portabilidade.
 3. Adição de novos pet shops: Estou assumindo que é necessário a adição de novos pet shops.
 4. Jest para testes: escolhido por ser um framework de testes de fácil utilização e ter uma curva de aprendizado relativamente suave.
-5. Uso do React: escolhida essa linguagem de programação, pois foi solicitado no pdf recebido.
+5. Uso do React: escolhida esse framework, pois foi solicitado no pdf recebido.
 6. Uso do nodemon: para que o servidor backend automaticamente atualize quando existir alguma atualização.
-7. Uso do Vite: para que o servidor frontend automaticamente atualize quando existir alguma atualização.
+7. Uso do Vite: como suporte para o React.
 8. Uso do Concurrently: para que o servidor backend e frontend rodem simultaneamente.
 
 ## Instalação
@@ -53,7 +53,7 @@ Antes de executar o projeto, certifique-se de ter o Node.js instalado em sua má
 
 ## Executando o Projeto
 
-Certifique-se de ter o banco de dados SQLite instalado. O arquivo do banco de dados (`db.sqlite`) será criado automaticamente quando o projeto for executado pela primeira vez.
+Certifique-se de ter o banco de dados SQLite3 instalado. O arquivo do banco de dados (`db.sqlite`) será criado automaticamente quando o projeto for executado pela primeira vez.
 
 Para iniciar o servidor e executar a aplicação, utilize o seguinte comando:
 
