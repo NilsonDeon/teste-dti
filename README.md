@@ -2,6 +2,11 @@
 
 Este é um sistema para calcular o melhor pet shop seguindo a ideia apresentada no teste prático da dti digital.
 
+![peek](https://github.com/NilsonDeon/teste-dti/assets/81258205/924f089a-1436-42ce-81d9-7edca197296f)
+
+
+![peek2](https://github.com/NilsonDeon/teste-dti/assets/81258205/d3b30abb-8139-4952-a9d5-e63ab0dacf7a)
+
 
 ## Tecnologias Utilizadas
 
