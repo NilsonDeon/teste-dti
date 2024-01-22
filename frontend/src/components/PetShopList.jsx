@@ -68,7 +68,6 @@ function PetShopList() {
 
   function openModal(){
     setIsOpen(true);
-    console.log("cu")
   }
 
   function closeModal(){
@@ -139,10 +138,12 @@ function PetShopList() {
           <label htmlFor="smallWeek">Cão Pequeno</label>
           <input type="number" name="smallWeek" onChange={(e) => setSmallWeek(e.target.value)}
           placeholder="Insira o Preço de Banho em Cão Pequeno no Dia Útil"
+          step={0.01}
             required/>
           <label htmlFor="largeWeek">Cão Grande</label>
           <input type="number" name="largeWeek" onChange={(e) => setLargeWeek(e.target.value)}
           placeholder="Insira o Preço de Banho em Cão Grande no Dia Útil"
+          step={0.01}
             required />
         </div>
         <div className="weekend">
@@ -150,10 +151,12 @@ function PetShopList() {
           <label htmlFor="smallWeekend">Cão Pequeno</label>
           <input type="number" name="smallWeekend" onChange={(e) => setSmallWeekend(e.target.value)}
           placeholder="Insira o Preço de Banho em Cão Pequeno no Final de Semana"
+          step={0.01}
             required />
           <label htmlFor="largeWeekend">Cão Grande</label>
           <input type="number" name="largeWeekend" onChange={(e) => setLargeWeekend(e.target.value)}
           placeholder="Insira o Preço de Banho em Cão Grande no Final de Semana"
+          step={0.01}
             required />
         </div>
         

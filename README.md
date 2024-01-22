@@ -40,10 +40,9 @@ Antes de executar o projeto, certifique-se de ter o Node.js instalado em sua má
 
     ```bash
     cd backend
-    npm install jest nodemon express sqlite3 cors
+    npm i jest nodemon express sqlite3 cors
 
     cd ../frontend
-    npm create vite@latest
     npm i
     ```
 

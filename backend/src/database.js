@@ -11,7 +11,8 @@ if (process.env.NODE_ENV !== "test") {
       throw err;
     } else {
       console.log(connectionMessage);
-      db.run(`
+      db.run(
+        `
         CREATE TABLE IF NOT EXISTS petshops (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT UNIQUE,
@@ -21,14 +22,16 @@ if (process.env.NODE_ENV !== "test") {
           smallWeekend REAL,
           largeWeekend REAL
         )
-      `, (err) => {
-        if (err) {
-          console.error("Erro ao criar a tabela:", err.message);
-        } else {
-          populatePetShops();
-          console.log("Tabela criada com sucesso.");
+      `,
+        (err) => {
+          if (err) {
+            console.error("Erro ao criar a tabela:", err.message);
+            throw err;
+          } else {
+            populatePetShops();
+          }
         }
-      });
+      );
     }
   });
 } else {
@@ -64,23 +67,25 @@ const petShops = {
 
 function populatePetShops() {
   Object.values(petShops).forEach((petShop) => {
-    db.run(`
+    db.run(
+      `
       INSERT OR IGNORE INTO petshops (name, distance, smallWeek, largeWeek, smallWeekend, largeWeekend)
       VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      petShop.name,
-      petShop.distance,
-      petShop.prices.week.small,
-      petShop.prices.week.large,
-      petShop.prices.weekend.small,
-      petShop.prices.weekend.large,
-    ], (err) => {
-      if (err) {
-        console.error("Erro ao inserir dados:", err.message);
-      } else {
-        console.log(`Dados inseridos para ${petShop.name}`);
+    `,
+      [
+        petShop.name,
+        petShop.distance,
+        petShop.prices.week.small,
+        petShop.prices.week.large,
+        petShop.prices.weekend.small,
+        petShop.prices.weekend.large,
+      ],
+      (err) => {
+        if (err) {
+          console.error("Erro ao inserir dados:", err.message);
+        }
       }
-    });
+    );
   });
 }
 
@@ -89,36 +94,43 @@ function getPetShopsFromDB() {
     db.all(`SELECT * FROM petshops`, [], (err, rows) => {
       if (err) {
         reject(err);
+      } else {
+        resolve(rows);
       }
-      resolve(rows);
     });
   });
-}
-
-function closeDB() {
-  db.close();
 }
 
 function insertPetShop(petShop) {
   return new Promise((resolve, reject) => {
-    db.run(`
+    db.run(
+      `
       INSERT OR IGNORE INTO petshops (name, distance, smallWeek, largeWeek, smallWeekend, largeWeekend)
       VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      petShop.name,
-      petShop.distance,
-      petShop.smallWeek,
-      petShop.largeWeek,
-      petShop.smallWeekend,
-      petShop.largeWeekend,
-    ], (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(`Dados inseridos para ${petShop.name}`);
+    `,
+      [
+        petShop.name,
+        petShop.distance,
+        petShop.smallWeek,
+        petShop.largeWeek,
+        petShop.smallWeekend,
+        petShop.largeWeekend,
+      ],
+      (err) => {
+
+        if (err) {
+          if (err.message.includes("UNIQUE constraint failed")) {
+            reject(new Error("ERRO: Valor duplicado"));
+          } else {
+            reject(err);
+          }
+        } else {
+          resolve(`Dados inseridos para ${petShop.name}`);
+        }
       }
-    });
+    );
   });
 }
 
-module.exports = { getPetShopsFromDB, insertPetShop, closeDB };
+// Exportando as funções
+module.exports = { getPetShopsFromDB, insertPetShop };

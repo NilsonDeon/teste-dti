@@ -24,8 +24,10 @@ app.post("/api/enviar-dados", async (req, res) => {
       data.smallDogs,
       data.largeDogs
     );
-    console.log(resp);
+    
+
     res.json(resp);
+   
   } catch (error) {
     console.error("Error processing data:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
@@ -44,7 +46,7 @@ app.post("/api/criar-dados", async (req, res) => {
     };
 
     const resp = await insertPetShop(data);
-    console.log(resp);
+
     res.json(resp);
   } catch (error) {
     console.error("Error creating data:", error.message);
