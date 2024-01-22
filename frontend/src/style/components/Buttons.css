@@ -1,0 +1,43 @@
+button {
+    width: 8em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--background-color);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.highlighted-button {
+    background-color: var(--accent-color);
+}
+
+.highlighted-button:hover {
+    background-color: #b5e8e6;
+}
+
+.negative-button {
+    background-color: #c02626;
+}
+
+.negative-button:hover {
+    background-color: #e83a3a;
+}
+
+.round-button {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}
+
+.modal-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0;
+    width: 70%;
+}

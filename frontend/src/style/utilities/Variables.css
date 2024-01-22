@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Roboto:400');
+
+:root {
+    --background-color: #081A19;
+    --text-color: #edf6f6;
+    --primary-color: #274D4B;
+    --secondary-color: #5B807E;
+    --accent-color: #9EE6E2;
+
+    --font-headings: "Poppins", sans-serif;
+    --font-body: "Roboto", sans-serif;
+}
