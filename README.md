@@ -50,6 +50,13 @@ Antes de executar o projeto, certifique-se de ter o Node.js instalado em sua má
 
 Certifique-se de ter o banco de dados SQLite instalado. O arquivo do banco de dados (`db.sqlite`) será criado automaticamente quando o projeto for executado pela primeira vez.
 
+Para rodar os testes, faça: 
+
+```bash
+cd ../backend
+npm run test
+```
+
 Para iniciar o servidor e executar a aplicação, utilize o seguinte comando:
 
 ```bash
@@ -57,10 +64,3 @@ cd frontend
 npm start
 ```
 Ele é acessado pelo link: http://localhost:5173/
-
-Para rodar os testes, faça:
-
-```bash
-cd ../backend
-npm run test
-```
