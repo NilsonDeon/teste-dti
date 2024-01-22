@@ -10,7 +10,7 @@ function validateBestPetShop(date, smallDogs, largeDogs){
     spanDate.innerHTML = "Insira uma data válida";
     response = false;
   }else {
-    console.log('aaaa')
+
     // não ser data anterior a atual desconsiderando a hora
     const today = new Date();
     date = new Date(date);  
@@ -63,6 +63,7 @@ function InputForm() {
 
     if (validateBestPetShop(date, smallDogs, largeDogs)) {
       var body = { date: date, smallDogs: smallDogs, largeDogs: largeDogs };
+      console.log(`<${date}><${smallDogs}><${largeDogs}>`)
       try {
         const response = await fetch("http://localhost:3001/api/enviar-dados", {
           method: "POST",
@@ -73,6 +74,7 @@ function InputForm() {
         });
 
         const responseData = await response.json();
+        console.log(`${responseData.name} ${responseData.price}`);
         setData(responseData);
       } catch (error) {
         console.error("Erro ao enviar dados:", error);
